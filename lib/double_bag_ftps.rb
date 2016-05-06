@@ -36,6 +36,11 @@ class DoubleBagFTPS < Net::FTP
     end
   end
 
+  def makepasv
+    host, port = parse229(sendcmd("EPSV"))
+    return host, port
+  end
+
   #
   # Allow @ftps_mode to be set when @sock is not connected
   #
